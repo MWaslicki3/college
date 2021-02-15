@@ -24,14 +24,14 @@ public class AdminControl {
             database.addUser(user);
         }
 
-        System.out.println("User " + username + " successfully added");
+
     }
 
     public void getUserList(){
         database.getUserList();
     }
 
-    public void removeUser(int id){
-        database.removeUserById(id);
+    public boolean removeUser(int id){
+        return database.removeUserById(id);
     }
 }

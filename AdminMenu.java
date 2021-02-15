@@ -47,6 +47,7 @@ public class AdminMenu {
         System.out.println("Pesel:");
         this.pesel = sc.nextLine();
         adminControl.newUser(credential,username, password, name, surname, pesel);
+        System.out.println("User " + username + " successfully added");
         System.out.println("Add another user?");
         System.out.println("Enter Y/N");
         String yesNo = sc.nextLine();
@@ -69,7 +70,12 @@ public class AdminMenu {
                 System.out.println("None user was removed");
                 break;
             } else if (remove != 1) {
-                adminControl.removeUser(remove);
+                boolean checkRemoved = adminControl.removeUser(remove);
+                if (checkRemoved){
+                    System.out.println("User removed successfully");
+                } else {
+                    System.out.println("Wrong id. Try again.");
+                }
             } else {
                     System.out.println("Cannot remove admin");
             }

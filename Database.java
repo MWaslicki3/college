@@ -21,17 +21,16 @@ public class Database {
             System.out.println(userRow);
         }
     }
-    public void removeUserById(int id){
+    public boolean removeUserById(int id){
         for(int i = 0; i < users.size(); i++) {
             if(users.get(i).userID == id){
-                users.remove(i);
                 userCred.remove(users.get(i).username);
                 userPass.remove(users.get(i).username);
-                System.out.println("User removed successfully");
-                return;
+                users.remove(i);
+                return true;
             }
         }
-        System.out.println("Wrong id. Try again.");
+        return false;
     }
 
     public boolean checkLogin(String login, String password){
