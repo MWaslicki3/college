@@ -17,9 +17,10 @@ public class Main {
             String username = sc.next();
             System.out.println("Enter password:");
             String password = sc.next();
-            if (database.checkLogin(username, password)){
+            User user = database.getUserByName(username);
+            if (user.password.equals(password)){
                 System.out.println("Logged in successfully!");
-                if (database.checkCredentials(username, "admin")){
+                if (user.credential.equals("admin")){
                     AdminControl adminControl = new AdminControl(database);
                     AdminMenu adminMenu = new AdminMenu(adminControl);
                     adminMenu.firstMenu();
@@ -42,7 +43,8 @@ public class Main {
                 System.out.println("Incorrect username or/and password. Try again.");
             }
         } else if (choose == 0){
-            //database.getUserList();
+            System.out.println("Thank you for visiting our website!");
+            System.out.println("See you next time!");
             System.exit(0);
         } else {
             System.out.println("Incorrect choice. Try again.");

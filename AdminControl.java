@@ -31,7 +31,7 @@ public class AdminControl {
         database.getUserList();
     }
 
-    public boolean removeUser(int id){
-        return database.removeUserById(id);
+    public boolean removeUser(int userId){
+        return database.removeUserById(userId);
     }
 }
