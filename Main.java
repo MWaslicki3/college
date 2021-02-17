@@ -24,21 +24,16 @@ public class Main {
                     AdminControl adminControl = new AdminControl(database);
                     AdminMenu adminMenu = new AdminMenu(adminControl);
                     adminMenu.firstMenu();
-                } /*else if (userCred.get(username).equals("prof")){
-                    Prof pf = new Prof();
-                    try
-                    {
-                        Prof.firstMenu();
-                    }
-                    catch(InterruptedException e)
-                    {
-                        College.firstPage();
-                    }
+                } else if (user.credential.equals("prof")){
+                    ProfControl profControl = new ProfControl(database);
+                    ProfMenu profMenu = new ProfMenu(profControl);
+                    profMenu.firstMenu();
 
                 } else {
-                    Student st = new Student();
-                    Student.firstMenu();
-                }*/
+                    StudentControl studentControl = new StudentControl(database,username);
+                    StudentMenu studentMenu = new StudentMenu(studentControl);
+                    studentMenu.firstMenu();
+                }
             } else {
                 System.out.println("Incorrect username or/and password. Try again.");
             }
@@ -59,6 +54,8 @@ public class Main {
         AdminControl admin1 = new AdminControl(database);
 
         admin1.newUser(AdminMenu.Credential.ADMIN,"admin","admin", "","","");
+        admin1.newUser(AdminMenu.Credential.PROF,"prof","prof", "prof","prof","prof");
+        admin1.newUser(AdminMenu.Credential.STUDENT,"student","student", "student","student","student");
         while(true) {
             mainMenu.firstPage(database);
         }
